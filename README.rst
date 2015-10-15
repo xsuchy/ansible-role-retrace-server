@@ -1,9 +1,9 @@
 ansible-role-retrace-server
 ---------------------------
 
-Role for deploying `retrace-server <https://github.com/abrt/retrace-server>`_
+Role for deploying `retrace-server <https://github.com/abrt/retrace-server>`_.
 
-See `defaults/main.yml <`Contribution guidelines <https://github.com/abrt/ansible-role-retrace-server/defaults/main.yml`_
+See `defaults/main.yml <https://github.com/abrt/ansible-role-retrace-server/defaults/main.yml>`_
 for the complete list of configuration variables.
 
 License
