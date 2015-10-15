@@ -1,0 +1,24 @@
+- name: erase faf packages
+  yum: name=retrace-server state=absent
+  when: rs_force_reinstall
+  tags:
+  - packages
+  - rs
+
+- name: install retrace-server package
+  yum : name=retrace-server state=installed
+  tags:
+  - packages
+  - rs
+
+- name: configure retrace-server
+  template: src=etc-retrace-server.conf.j2
+    dest=/etc/retrace-server.conf
+  notify:
+  - restart httpd
+  tags:
+  - config
+  - rs
+
+- include: check.yml
+  when: rs_check_health
