@@ -6,6 +6,9 @@ rs_auth_group: retrace
 # Force to use HTTPS - only disable on trusted network
 rs_require_https: true
 
+# make retrace server available on <host>/{{ rs_httpd_prefix }}
+rs_httpd_prefix:
+
 # Allow to delete task data via HTTP API (https://server/<task_id>/delete)
 rs_allow_api_delete: false
 

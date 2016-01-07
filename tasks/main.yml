@@ -20,5 +20,14 @@
   - config
   - rs
 
+- name: retrace-server http config
+  template: src=retrace-server-httpd.conf.j2
+    dest=/etc/httpd/conf.d/retrace-server-httpd.conf
+  notify:
+  - restart httpd
+  tags:
+  - config
+  - rs
+
 - include: check.yml
   when: rs_check_health

@@ -1,0 +1,47 @@
+#{{ ansible_managed }}
+
+WSGISocketPrefix /var/run/retrace
+WSGIDaemonProcess retrace user=retrace group=retrace processes=5 threads=3
+WSGIProcessGroup retrace
+
+WSGIScriptAliasMatch ^/{{ rs_httpd_prefix }}/manager(/.*)?$ /usr/share/retrace-server/manager.wsgi
+WSGIScriptAliasMatch ^/{{ rs_httpd_prefix }}/settings$ /usr/share/retrace-server/settings.wsgi
+WSGIScriptAliasMatch ^/{{ rs_httpd_prefix }}/create$ /usr/share/retrace-server/create.wsgi
+WSGIScriptAliasMatch ^/{{ rs_httpd_prefix }}/stats$ /usr/share/retrace-server/stats.wsgi
+WSGIScriptAliasMatch ^/{{ rs_httpd_prefix }}/checkpackage$ /usr/share/retrace-server/checkpackage.wsgi
+WSGIScriptAliasMatch ^/{{ rs_httpd_prefix }}/[0-9]+/?$ /usr/share/retrace-server/status.wsgi
+WSGIScriptAliasMatch ^/{{ rs_httpd_prefix }}/[0-9]+/delete$ /usr/share/retrace-server/delete.wsgi
+WSGIScriptAliasMatch ^/{{ rs_httpd_prefix }}/[0-9]+/log$ /usr/share/retrace-server/log.wsgi
+WSGIScriptAliasMatch ^/{{ rs_httpd_prefix }}/[0-9]+/backtrace$ /usr/share/retrace-server/backtrace.wsgi
+WSGIScriptAliasMatch ^/{{ rs_httpd_prefix }}/[0-9]+/exploitable$ /usr/share/retrace-server/exploitable.wsgi
+WSGIScriptAliasMatch ^/{{ rs_httpd_prefix }}/[0-9]+/start$ /usr/share/retrace-server/start.wsgi
+WSGIScriptAliasMatch ^/{{ rs_httpd_prefix }}$ /usr/share/retrace-server/index.wsgi
+
+<Directory "/var/cache/retrace-server">
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    <IfModule mod_authz_core.c>
+        # Apache 2.4
+        Require all granted
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        # Apache 2.2
+        Order allow,deny
+        Allow from all
+    </IfModule>
+</Directory>
+
+<LocationMatch "^/{{ rs_httpd_prefix }}/(manager(/.*)?|settings|create|stats|checkpackage|[0-9]+(/(log|backtrace|delete))?)?$">
+    Options -Indexes -FollowSymLinks
+    <IfModule mod_authz_core.c>
+        # Apache 2.4
+        Require all granted
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        # Apache 2.2
+        Order allow,deny
+        Allow from all
+    </IfModule>
+</LocationMatch>
+
+Alias /repos /var/cache/retrace-server
