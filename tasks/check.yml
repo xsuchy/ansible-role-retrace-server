@@ -2,6 +2,8 @@
 
 # check functionality
 
+- meta: flush_handlers
+
 - set_fact:
     settings_url: "https://{{ ansible_default_ipv4.address }}/settings"
 
