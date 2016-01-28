@@ -2,7 +2,6 @@
 
 WSGISocketPrefix /var/run/retrace
 WSGIDaemonProcess retrace user=retrace group=retrace processes=5 threads=3
-WSGIProcessGroup retrace
 
 WSGIScriptAliasMatch ^/manager(/.*)?$ /usr/share/retrace-server/manager.wsgi
 WSGIScriptAliasMatch ^/settings$ /usr/share/retrace-server/settings.wsgi
