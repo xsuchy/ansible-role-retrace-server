@@ -177,3 +177,6 @@ rs_force_reinstall: false
 
 # Check server health after installation
 rs_check_health: true
+
+# Hostname
+hostname: example.org
