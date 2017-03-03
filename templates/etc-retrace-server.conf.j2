@@ -24,6 +24,12 @@ AllowExternalDir = {{ rs_allow_external_dir|int }}
 # Allow to create tasks owned by task manager (security risk)
 AllowTaskManager = {{ rs_allow_task_manager|int }}
 
+# Allow to create VMCore tasks in the task manager
+AllowVMCoreTask = {{ rs_allow_vmcore_task|int }}
+
+# Allow to create Userspace core tasks in the task manager
+AllowUsrCoreTask = {{ rs_allow_usrcore_task|int }}
+
 # If white list is disabled, anyone can delete tasks
 TaskManagerAuthDelete = {{ rs_task_manager_auth_delete|int }}
 

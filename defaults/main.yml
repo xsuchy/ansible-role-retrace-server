@@ -18,6 +18,12 @@ rs_allow_external_dir: false
 # Allow to create tasks owned by task manager (security risk)
 rs_allow_task_manager: false
 
+# Allow to create VMCore tasks in the task manager
+rs_allow_vmcore_task: true
+
+# Allow to create VMCore tasks in the task manager
+rs_allow_usrcore_task: true
+
 # If white list is disabled, anyone can delete tasks
 rs_task_manager_auth_delete: false
 
@@ -171,3 +177,6 @@ rs_force_reinstall: false
 
 # Check server health after installation
 rs_check_health: true
+
+# Hostname
+hostname: example.org
