@@ -31,6 +31,7 @@ WSGIScriptAliasMatch ^/$ /usr/share/retrace-server/index.wsgi
 </Directory>
 
 <LocationMatch "^/(manager(/.*)?|settings|create|stats|checkpackage|[0-9]+(/(log|backtrace|delete))?)?$">
+    WSGIProcessGroup retrace
     Options -Indexes -FollowSymLinks
     <IfModule mod_authz_core.c>
         # Apache 2.4
