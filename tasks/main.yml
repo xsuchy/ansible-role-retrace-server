@@ -3,6 +3,11 @@
 - include: install.yml
   tags: [rs, packages]
 
+# Set up use of FAF packages
+- include: usefafpkgs.yml
+  when: rs_use_faf_packages
+  tags: [rs, use_faf_packages]
+
 # Configure retrace-server
 - include: config.yml
   tags: [rs, config]
