@@ -15,8 +15,15 @@
   become: yes
   become_user: postgres
 
-- name: add retrace to group faf
-  user: name=retrace groups=retrace,faf append=yes present=yes
+# for already existing files/dirs
+- name: ACL for user retrace
+  acl: path=/var/spool/faf/lob state=present recursive=yes
+       entity=retrace etype=user permissions=rwX
+
+# for files/dirs created in future
+- name: default ACL for user retrace
+  acl: path=/var/spool/faf/lob state=present recursive=yes default=yes
+       entity=retrace etype=user permissions=rwX
 
 - name: check for hardlink dir
   stat: path={{ rs_faf_link_dir }}
@@ -25,12 +32,3 @@
 - name: make dir for hardlinks
   file: path={{ rs_faf_link_dir }} state=directory owner=retrace group=retrace
   when: rsdir.stat.exists == False
-
-- name: restart machine after usermod
-  shell: sleep 2 && shutdown -r now
-  async: 1
-  poll: 0
-
-- name: wait for the machine to come alive
-  local_action: wait_for host="{{ ansible_ssh_host | default(inventory_hostname) }}"
-                         state=started port=22 delay=30 timeout=300 connect_timeout=15
