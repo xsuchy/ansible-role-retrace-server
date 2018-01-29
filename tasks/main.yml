@@ -1,18 +1,18 @@
 ---
 # Install retrace-server packages
-- include: install.yml
+- import_tasks: install.yml
   tags: [rs, packages]
 
 # Set up use of FAF packages
-- include: usefafpkgs.yml
+- import_tasks: usefafpkgs.yml
   when: rs_use_faf_packages
   tags: [rs, use_faf_packages]
 
 # Configure retrace-server
-- include: config.yml
+- import_tasks: config.yml
   tags: [rs, config]
 
 # Check functionality of the retrace-server
-- include: check.yml
+- import_tasks: check.yml
   when: rs_check_health
   tags: [rs, check]
