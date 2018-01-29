@@ -4,4 +4,4 @@
   when: rs_force_reinstall
 
 - name: install retrace-server package
-  package: name=retrace-server state=installed
+  package: name=retrace-server state=present
