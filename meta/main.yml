@@ -12,7 +12,6 @@ galaxy_info:
      versions:
       - 26
       - 27
-      - 25
   categories:
    - system
 #dependencies:
