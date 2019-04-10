@@ -45,4 +45,4 @@ WSGIScriptAliasMatch ^/$ /usr/share/retrace-server/index.wsgi
     </IfModule>
 </LocationMatch>
 
-Alias /repos /var/cache/retrace-server
+Alias /repos {{ rs_repo_dir }}
