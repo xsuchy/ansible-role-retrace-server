@@ -46,3 +46,8 @@ WSGIScriptAliasMatch ^/$ /usr/share/retrace-server/index.wsgi
 </LocationMatch>
 
 Alias /repos {{ rs_repo_dir }}
+<Directory "{{ rs_repo_dir }}">
+    Require all granted
+    Options Indexes FollowSymLinks
+    IndexOptions FancyIndexing
+</Directory>
