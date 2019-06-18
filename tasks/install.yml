@@ -1,7 +1,7 @@
 ---
 - name: erase retrace-server packages
   package: name=retrace-server state=absent
-  when: rs_force_reinstall
+  when: rs_force_reinstall|bool
 
 - name: install retrace-server package
   package: name=retrace-server state=present
