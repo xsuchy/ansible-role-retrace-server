@@ -14,6 +14,7 @@
     return_content: yes
     validate_certs: no
   register: uri_res
+  check_mode: no
 
 - fail: msg="{{ settings_url }} doesn't contain supported_releases"
   when:
