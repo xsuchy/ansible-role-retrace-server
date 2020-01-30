@@ -2,7 +2,7 @@
 - name: configure retrace-server
   template:
     src: etc-retrace-server.conf.j2
-    dest: /etc/retrace-server.conf
+    dest: /etc/retrace-server/retrace-server.conf
   notify: restart httpd
 
 - name: retrace-server http config
