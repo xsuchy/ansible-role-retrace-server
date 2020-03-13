@@ -10,3 +10,9 @@
     src: retrace-server-httpd.conf.j2
     dest: /etc/httpd/conf.d/retrace-server-httpd.conf
   notify: restart httpd
+
+- name: configure retrace-server hooks config
+  template:
+    src: etc-retrace-server-hooks.conf.j2
+    dest: /etc/retrace-server/retrace-server-hooks.conf
+  notify: restart httpd
