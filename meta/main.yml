@@ -13,7 +13,7 @@ galaxy_info:
       - 26
       - 27
       - 28
-  categories:
+  galaxy_tags:
    - system
 #dependencies:
 #  - { role: httpd }
