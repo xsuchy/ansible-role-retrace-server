@@ -183,12 +183,12 @@ rs_force_reinstall: false
 # Check server health after installation
 rs_check_health: true
 
-# Path to the executable hook scripts
-# https://github.com/abrt/retrace-server/wiki/Hook-scripts
-rs_hooks_executable_path: /usr/libexec/retrace-server/hooks/
-
-# Global time limit for hook scripts (in seconds)
-rs_hooks_global_timeout: 300
-
 # Hostname
 hostname: example.org
+
+# Path to the executable hook scripts
+# see https://github.com/abrt/retrace-server/wiki/Hook-scripts
+rs_executable_hooks_path: "/usr/libexec/retrace-server/hooks/"
+
+# Global time limit for hook scripts (in seconds)
+rs_global_hook_timeout: 300
